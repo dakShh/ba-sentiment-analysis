@@ -4,13 +4,10 @@ from app import scrapper
 
 if __name__ == "__main__":
     try:
-        # scrapper.view_all_reviews()
         scrapper.start_scraping()
-        # scrapper.view_all_reviews()
         scrapper.save_to_csv()
-        print("Done!")
+
     except Exception as e:
-        print("E: ",e)
         # Get exception info
         exc_type, exc_obj, exc_tb = sys.exc_info()
 

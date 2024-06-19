@@ -41,7 +41,6 @@ def start_scraping():
             else:
                 rating = "404"
             
-            
             if review_heading_ele:
                 review_heading = container.find("h2", {"class":"text_header"}).text[1:-1]
             else:
@@ -63,26 +62,15 @@ def start_scraping():
         print(f"Number of reviews scrapped: {len(reviews)}")
         print("-"*45)
 
-
-
-def view_all_reviews():
-    for i in range(len(reviews)):
-        print(reviews[i])
-        print("-"*50)
-
-# start_scraping()
-# view_all_reviews()
-
 def save_to_csv():
-    filename = input("Enter name for the CSV file: ")
-    with open(os.path.join(config.BASE_PATH, filename+".csv"), 'w', newline='',encoding='utf-8') as csvfile:
+    file_name = input("Enter name for the CSV file: ")
+    file_path = os.path.join(config.BASE_PATH, file_name + ".csv")
+
+    with open(file_path, 'w', newline='',encoding='utf-8') as csvfile:
         
-        # csv_writer = csv.writer(csvfile)
         csvfile.write('Rating, Review Title, Date, Reviews\n')
         csvfile.write('\n'.join(reviews))
 
-        # for review in reviews:
-            # csv_writer.writerow([review])
 
-    print(f"Data saved to {filename}")
+    print(f"Data saved to {file_name}")
 
