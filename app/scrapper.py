@@ -10,7 +10,7 @@ page_size = 1000
 reviews = []
 
 if not os.path.exists(config.BASE_PATH):
-    os.makedirs(config.BASE_PATHH)
+    os.makedirs(config.BASE_PATH)
 
 def start_scraping():
     print("Scrapper started..")
