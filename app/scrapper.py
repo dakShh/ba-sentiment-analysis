@@ -13,7 +13,9 @@ if not os.path.exists(config.BASE_PATH):
     os.makedirs(config.BASE_PATHH)
 
 def start_scraping():
+    print("Scrapper started..")
     for i in range(1, pages + 1):
+
         print(f"Scraping page {i}")
 
         # Create URL to collect links from paginated data
@@ -37,7 +39,7 @@ def start_scraping():
             if rating_ele:
                 rating = container.find("span",{"itemprop":"ratingValue"}).text
             else:
-                rating = 404
+                rating = "404"
             
             
             if review_heading_ele:
@@ -55,7 +57,12 @@ def start_scraping():
             else:
                 review = "Na"
 
-            reviews.append(f"{rating}, {review_heading}, {time}, {review}")
+            reviews.append(f"{rating.replace(",","")}, {review_heading.replace(",","")}, {time.replace(",","")}, {review.replace(",","")}")
+
+        
+        print(f"Number of reviews scrapped: {len(reviews)}")
+        print("-"*45)
+
 
 
 def view_all_reviews():
@@ -63,12 +70,19 @@ def view_all_reviews():
         print(reviews[i])
         print("-"*50)
 
+# start_scraping()
+# view_all_reviews()
 
 def save_to_csv():
     filename = input("Enter name for the CSV file: ")
     with open(os.path.join(config.BASE_PATH, filename+".csv"), 'w', newline='',encoding='utf-8') as csvfile:
+        
+        # csv_writer = csv.writer(csvfile)
         csvfile.write('Rating, Review Title, Date, Reviews\n')
         csvfile.write('\n'.join(reviews))
+
+        # for review in reviews:
+            # csv_writer.writerow([review])
 
     print(f"Data saved to {filename}")
 

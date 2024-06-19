@@ -6,6 +6,7 @@ if __name__ == "__main__":
     try:
         # scrapper.view_all_reviews()
         scrapper.start_scraping()
+        # scrapper.view_all_reviews()
         scrapper.save_to_csv()
         print("Done!")
     except Exception as e:
