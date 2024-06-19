@@ -56,7 +56,8 @@ def start_scraping():
             else:
                 review = "Na"
 
-            reviews.append(f"{rating.replace(",","")}, {review_heading.replace(",","")}, {time.replace(",","")}, {review.replace(",","")}")
+            reviews.append(f"{rating.replace(',', '')}, {review_heading.replace(',', '')}, {time.replace(',', '')}, {review.replace(',', '')}")
+
 
         
         print(f"Number of reviews scrapped: {len(reviews)}")
